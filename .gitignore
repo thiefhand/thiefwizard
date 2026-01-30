@@ -1,0 +1,7 @@
+install/
+build/
+install_db.toml
+config.toml
+software.toml
+imgui.ini
+.vscode/
