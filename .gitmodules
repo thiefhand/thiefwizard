@@ -10,3 +10,6 @@
 [submodule "3rd_party/nghttp2"]
 	path = 3rd_party/nghttp2
 	url = https://github.com/nghttp2/nghttp2
+[submodule "3rd_party/imgui"]
+	path = 3rd_party/imgui
+	url = https://github.com/ocornut/imgui
