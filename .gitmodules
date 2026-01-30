@@ -1,3 +1,9 @@
 [submodule "3rd_party/SDL"]
 	path = 3rd_party/SDL
 	url = https://github.com/libsdl-org/SDL
+[submodule "3rd_party/libarchive"]
+	path = 3rd_party/libarchive
+	url = https://github.com/libarchive/libarchive
+[submodule "3rd_party/tomlplusplus"]
+	path = 3rd_party/tomlplusplus
+	url = https://github.com/marzer/tomlplusplus
