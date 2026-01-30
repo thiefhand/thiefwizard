@@ -1,4 +1,6 @@
 # SDL
+set(SDL_STATIC ON)
+set(SDL_SHARED OFF)
 add_subdirectory(SDL)
 # add_subdirectory(SDL_net)
 
@@ -43,16 +45,23 @@ set(CURL_STATICLIB ON)
 set(CURL_ZLIB OFF)
 set(CMAKE_USE_LIBSSH2 OFF) 
 set(CURL_USE_LIBPSL OFF)
+set(BUILD_EXAMPLES OFF)
 add_subdirectory(libcurl)
 
 # YamlCPP
 add_subdirectory(tomlplusplus)
 
 # LibArchive
+set(BUILD_STATIC_LIBS ON)
+set(BUILD_SHARED_LIBS OFF)
 add_subdirectory(libarchive)
+target_compile_definitions(thiefwizard PUBLIC -DLIBARCHIVE_STATIC)
 
 # Link to executable
-target_link_libraries(thiefwizard PUBLIC SDL3::SDL3)
+target_link_libraries(thiefwizard PUBLIC SDL3::SDL3-static)
+if (MSVC)
+ #  target_link_libraries(thiefwizard PUBLIC SDL3::SDL3_main)
+endif()
 target_link_libraries(thiefwizard PUBLIC imgui)
 target_link_libraries(thiefwizard PUBLIC glad)
 target_link_libraries(thiefwizard PUBLIC libcurl)

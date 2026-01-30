@@ -5,3 +5,4 @@ config.toml
 software.toml
 imgui.ini
 .vscode/
+.vs/

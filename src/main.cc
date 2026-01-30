@@ -1,8 +1,13 @@
+#define LIBARCHIVE_STATIC
+
 #include "app.h"
 
 #include <curl/curl.h>
 
-int main(int argc, const char* argv[]) {
+#include "SDL3/SDL.h"
+#include "SDL3/SDL_main.h"
+
+int main(int argc, char* argv[]) {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_EVENTS);
 
     CURLcode result = curl_global_init(CURL_GLOBAL_ALL);
