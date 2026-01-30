@@ -1,0 +1,8 @@
+# Vendored library paths
+3rd_party/glad/
+3rd_party/imgui/
+3rd_party/libarchive/
+3rd_party/libcurl/
+3rd_party/nghttp2/
+3rd_party/SDL/
+3rd_party/tomlplusplus/
