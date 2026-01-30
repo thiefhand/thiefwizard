@@ -7,3 +7,6 @@
 [submodule "3rd_party/tomlplusplus"]
 	path = 3rd_party/tomlplusplus
 	url = https://github.com/marzer/tomlplusplus
+[submodule "3rd_party/nghttp2"]
+	path = 3rd_party/nghttp2
+	url = https://github.com/nghttp2/nghttp2
