@@ -26,7 +26,7 @@ toml::table Installation::saveToTOML() {
 void Installation::execute() {
     std::string parentPath = std::filesystem::path{ exePath }.parent_path();
     std::filesystem::current_path(parentPath);
-    std::string exeName = std::filesystem::path{ exePath }.filename();
+    std::string exeName = std::filesystem::path{ exePath }.filename().string();
 
     printf("CWD: %s\n", std::filesystem::current_path().c_str());
     printf("Running: %s\n", exeName.c_str());
