@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <filesystem>
+#ifdef linux
+#include <sys/stat.h>
+#endif
 
 #include "curl/curl.h"
 
@@ -78,8 +81,14 @@ std::string Software::installArchive(std::string& installDir, std::string& archi
 
     archive_read_free(a);
 
-    /* Return the full path the executable. */
-    return containingDir + meta.exePath;
+    /* Make sure the executable is execute-able. */
+    std::string executablePath = containingDir + meta.exePath;
+#ifdef linux
+    chmod(executablePath.c_str(), S_IRWXU);
+#endif
+
+    /* Return the full path to the executable. */
+    return executablePath;
 }
 
 void Software::uninstall(std::string& installDir) {

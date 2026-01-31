@@ -1,5 +1,6 @@
 #include "installation.h"
 
+#include <filesystem>
 #include <string>
 
 Installation Installation::loadFromTOML(toml::table* tbl) {
@@ -22,7 +23,22 @@ toml::table Installation::saveToTOML() {
     return tbl;
 }
 
-void Installation::execute() { std::system(exePath.c_str()); }
+void Installation::execute() {
+    std::string parentPath = std::filesystem::path{ exePath }.parent_path();
+    std::filesystem::current_path(parentPath);
+    std::string exeName = std::filesystem::path{ exePath }.filename();
+
+    printf("CWD: %s\n", std::filesystem::current_path().c_str());
+    printf("Running: %s\n", exeName.c_str());
+
+    #ifdef linux
+    std::system(("./" + exeName).c_str());
+    #endif
+
+    #ifdef _WIN32
+    std::system(exeName.c_str());
+    #endif
+}
 
 static int evalVersion(std::string versionStr) {
     std::stringstream ss{ versionStr };
@@ -37,6 +53,4 @@ static int evalVersion(std::string versionStr) {
     return value;
 }
 
-bool Installation::isBehind(std::string versionStr) {
-    return evalVersion(version) < evalVersion(versionStr);
-}
+bool Installation::isBehind(std::string versionStr) { return evalVersion(version) < evalVersion(versionStr); }

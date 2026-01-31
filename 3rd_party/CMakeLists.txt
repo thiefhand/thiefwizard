@@ -54,6 +54,7 @@ add_subdirectory(tomlplusplus)
 # LibArchive
 set(BUILD_STATIC_LIBS ON)
 set(BUILD_SHARED_LIBS OFF)
+set(ENABLE_TEST OFF)
 add_subdirectory(libarchive)
 target_compile_definitions(thiefwizard PUBLIC -DLIBARCHIVE_STATIC)
 
