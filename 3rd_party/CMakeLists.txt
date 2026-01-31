@@ -35,6 +35,7 @@ target_include_directories(glad PUBLIC glad/include)
 # add_subdirectory(libpsl)
 
 # NGHTTP2
+set(ENABLE_LIB_ONLY ON)
 add_subdirectory(nghttp2)
 
 # LibCurl
