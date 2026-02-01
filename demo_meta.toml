@@ -1,0 +1,5 @@
+[meta]
+name = "reclaimer_windows"
+description = "Bleeding edge build of Reclaimer by Thiefhand. INTERNAL USE ONLY"
+version = "0.0.2"
+exe_path = "reclaimer.exe"
