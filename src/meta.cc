@@ -40,6 +40,8 @@ static size_t write_to_memory(void* contents, size_t size, size_t nmemb, void* u
 }
 
 Meta Meta::download(std::string& url) {
+    printf("Downloading metadata...\n");
+
     /* Download a target to [target].tar. */
     MemoryStruct mem{};
     mem.memory = malloc(1);
