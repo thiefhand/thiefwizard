@@ -120,6 +120,7 @@ void SWList::do_gui() {
         ImGui::SameLine();
         ImGui::BeginGroup();
         {
+            ImGui::TextColored(ImColor(255, 128, 0), "LOGAN VERSION");
             ImGui::Text(ICON_MS_MAGIC_BUTTON " ThiefWizard by Thiefhand");
             ImGui::Text("(c) 2026-");
             ImGui::Text("by Angus Goucher");
