@@ -40,9 +40,9 @@ set(ENABLE_DOC OFF)
 add_subdirectory(nghttp2)
 
 # LibCurl
-set(HTTP_ONLY ON)
+# set(HTTP_ONLY ON)
 set(CMAKE_USE_OPENSSL OFF)
-set(BUILD_CURL_EXE OFF)
+# set(BUILD_CURL_EXE OFF)
 set(CURL_STATICLIB ON)
 set(CURL_ZLIB OFF)
 set(CMAKE_USE_LIBSSH2 OFF) 
