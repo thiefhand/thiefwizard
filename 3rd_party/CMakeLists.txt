@@ -48,6 +48,8 @@ set(CURL_ZLIB OFF)
 set(CMAKE_USE_LIBSSH2 OFF) 
 set(CURL_USE_LIBPSL OFF)
 set(BUILD_EXAMPLES OFF)
+set(BUILD_STATIC_LIBS ON)
+set(BUILD_SHARED_LIBS OFF)
 add_subdirectory(libcurl)
 
 # YamlCPP
