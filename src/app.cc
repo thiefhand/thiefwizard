@@ -7,6 +7,7 @@
 #include <backends/imgui_impl_sdl3.h>
 #include <glad/gl.h>
 #include <imgui.h>
+#include "curl/curl.h"
 #include "ims_icons.h"
 
 #include "sw_list.h"
@@ -22,6 +23,14 @@ App::App() {
     open_window(new SWList(this));
 
     config = Config::loadFromFile("config.toml");
+
+    curl_version_info_data* nfo = curl_version_info(CURLVERSION_NOW);
+    printf("%s\n", nfo->version);
+    const char* const* protocols = nfo->protocols;
+    for (size_t i = 0; protocols[i] != NULL; i++) {
+        printf("%s, ", protocols[i]);
+    }
+    printf("\n");
 }
 
 void App::run() {
@@ -63,9 +72,9 @@ int App::make_window() {
 
     /* Make the window */
     m_window_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
-    m_window =
-        SDL_CreateWindow("ThiefWizard", 1, 1,
-                         SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN | SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_FULLSCREEN);
+    m_window = SDL_CreateWindow("ThiefWizard", 1, 1,
+                                SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN |
+                                    SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_FULLSCREEN);
     if (m_window == nullptr) {
         printf("Error: SDL_CreateWindow(): %s\n", SDL_GetError());
         return APP_MAKE_WINDOW_FAILURE;
@@ -151,8 +160,8 @@ void App::init_imgui() {
 
     ImWchar editor_renderer_mdi_icon_ranges[3] = { ICON_MIN_MS, ICON_MAX_MS, 0 };
     auto config = new ImFontConfig();
-	config->GlyphOffset = ImVec2(2, 5);
-	config->MergeMode = true;
+    config->GlyphOffset = ImVec2(2, 5);
+    config->MergeMode = true;
     io.Fonts->AddFontFromFileTTF("res/msi.ttf", 19, config, editor_renderer_mdi_icon_ranges);
 }
 
@@ -172,7 +181,7 @@ void App::do_gui() {
         const char* base_name = window->get_name();
         char unique_title[1024] = { 0 };
         snprintf(unique_title, 1024, "%s##%p", base_name, (void*)window);
-        
+
         /* Set up and render window. */
         ImGui::SetNextWindowSize(ImVec2(400, 300), ImGuiCond_Appearing);
         ImGui::Begin(unique_title, &open);
