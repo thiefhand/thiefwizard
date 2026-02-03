@@ -39,6 +39,7 @@ target_include_directories(glad PUBLIC glad/include)
 set(ENABLE_DOC OFF)
 add_subdirectory(nghttp2)
 
+# add_subdirectory(openssl)
 
 # LibCurl
 # set(HTTP_ONLY ON)
